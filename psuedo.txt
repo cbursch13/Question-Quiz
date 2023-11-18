@@ -1,10 +1,18 @@
 create all the variables for each part (questions, timer, score)
-create event listeners for button clicks, right answer, container, timer, 
-start the timer when we click the start button
+use event listener to start the timer when we click the start button
 count the timer down from the amount of time we start it at (10 seconds for the number of questions)
+use render to stop when timer hits zero
 every question wrong take off 10 seconds from the timer
-
 create an array of questions and make the choices be arrays that we can choose the correct answer and then reference back to
-create all the variables for each part (questions, timer, score)
-append questions to existing html file by choosing the first item in the array
+choose first item in the array of questions
+Create new elements in html file for questions to appear on screen 
 use a for loop to cycle through each question
+use event listeners to see which answer was chosen and compare event with correct answer if statement to add points score and else statement to subtract time from timer using penalty variable 
+track where you at in the for loop of questions
+when questions are finished append a message to html saying all done!
+show score of user
+display a button to enter using add to document
+have user enter score into box with initials
+save event of entering information and sent to local storage
+retrieve score and initials from local storage and display on additional html screen that you can switch to using a switch link
+
