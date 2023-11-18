@@ -1,0 +1,30 @@
+/*Styling and position of entry page container*/
+#container {
+    position: absolute;
+    left: 30%;
+    top: 10%;
+    width: 500px;
+    height: 500px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+/*Start button styling and position*/
+#startTime {
+    background-color: rgba(180, 180, 180, 0.89);
+    padding 15px 35px;
+    font-size 30px;
+    font-weight: bold;
+}
+/*Start button cursor hover styling*/
+#startTime:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+/*Position of timer*/
+#currentTime{
+    float: right;
+}
