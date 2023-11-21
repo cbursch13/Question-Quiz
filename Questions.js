@@ -37,22 +37,52 @@ var questions = [
 
 //Declared variables
 var score = 0;
-var questionIndex = 0
-var timer = document.querySelector("startTime")
-var currentTime = document.querySelector("#currentTime")
-var questionsDiv = document.querySelector("#questionsDiv")
-var container = document.querySelector("#container")
+var questionIndex = 0;
+var timer = document.querySelector("#startTime");
+var currentTime = document.querySelector("#currentTime");
+var questionsDiv = document.querySelector("#questionsDiv");
+var container = document.querySelector("#container");
 
 
 
 //Seconds left is 10 seconds per question
-var Secondsleft = 60
+var Secondsleft = 60;
 //Interval start time
-var Intervalstart = 0
+var Intervalstart = 0;
 //Penalty for questions wrong
-var penalty = 5
+var penalty = 5;
+//Create new element 
+var ulCreate = document.createElement("ul");
 
-timer.addEventListener
+//Start timer on start button click
+timer.addEventListener("click", function () {
+        if (Intervalstart === 0) {
+        Intervalstart = setInterval(function () {
+        Secondsleft--;
+        currentTime.textContent = "Time Left: " + Secondsleft;
+
+        if (Seconds<=0) {
+            clearInterval(Intervalstart);
+            allDone();
+            currentTime.textContent = "Time's up!!!!";
+         }
+        }, 1000);
+    }
+    render(questionIndex);
+});
+
+//Loads question array to the questionsDiv
+function loadquestion (questionIndex) {
+    questionsDiv.innerHTML = " ";
+    ulCreate.innerHTML = " ";
+
+    for (var i = 0; i< questions.length; i++) {
+        var userQuestion = questions[questionIndex].title;
+        var userChoices = questions[questionIndex].choices;
+        questionsDiv.textContent = userQuestion;
+    }
+
+}
 
 
 
