@@ -62,7 +62,7 @@ timer.addEventListener("click", function () {
 
         if (Secondsleft<=0) {
             clearInterval(Intervalstart);
-            //Add All done Message function
+            allDone();
             currentTime.textContent = "Time's up!!!!";
          }
         }, 1000);
@@ -83,18 +83,20 @@ function loadquestion (questionIndex) {
     }
 //Adds question choices to html
     userChoices.forEach(function (newItem) {
-        var listItem = document.createElement("ul");
+        var listItem = document.createElement("li");
         listItem.textContent = newItem;
         questionsDiv.appendChild(ulCreate);
         ulCreate.appendChild(listItem);
         listItem.addEventListener("click",(compare));
-        })
+         })
 }
 //Compares user event with correct question answer
 function compare(event) {
     var element = event.target;
-    if (element.matches("ul")) {
-         var createDiv = document.createElement("div");
+    
+    if (element.matches("li")) {
+         
+        var createDiv = document.createElement("div");
          createDiv.setAttribute("id", "createDiv");
 
          if(element.textContent == questions[questionIndex].answer) {
@@ -108,6 +110,10 @@ function compare(event) {
             }
 
 }
+
+function allDone() {
+    questionsDiv.innerHTML = "";
+    currentTime.innerHTML = "";}
 
 
 
