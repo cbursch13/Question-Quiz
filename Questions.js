@@ -68,7 +68,7 @@ timer.addEventListener("click", function () {
         }, 1000);
     }
     loadquestion(questionIndex);
-});
+})
 
 //Loads question array to the questionsDiv
 function loadquestion (questionIndex) {
@@ -87,41 +87,47 @@ function loadquestion (questionIndex) {
         listItem.textContent = newItem;
         questionsDiv.appendChild(ulCreate);
         ulCreate.appendChild(listItem);
+        listItem.addEventListener("click", (compareAnswer));
         })
+        
 }
-//Compares user choice with correct question answer
-// function compare(event) {
-//     var element = event.target;
+
+//Compares user choice with correct answer
+function compareAnswer(event) {
+    var selectedChoice = event.target;
+    console.log(selectedChoice);
     
-//     if (element.matches("li")) {
-         
-//         var createDiv = document.createElement("div");
-//          createDiv.setAttribute("id", "createDiv");
+    if (selectedChoice = "button") {
+        var createDiv = document.createElement("div");
+         createDiv.setAttribute("id", "createDiv");
+         createDiv.innerText = '';
+         questionsDiv.appendChild(createDiv);
+    
+         if (questions[questionIndex].answer == selectedChoice.innerText) {
+        console.log("True");
+        //     score++;
+        //     createDiv.innerText = "Correct! The answer is:  " + questions[questionIndex].answer;
+        //      };
+        //  } else {
+        //      Secondsleft = Secondsleft - penalty;
+        //      createDiv.textContent = "Wrong! The correct answer is:  " + questions[questionIndex].answer;
+        }}}
 
-//          if(element.textContent == questions[questionIndex].answer) {
-//             score++;
-//             createDiv.textContent = "Correct! The answer is:  " + questions[questionIndex].answer;
-
-//          } else {
-//             Secondsleft = Secondsleft - penalty;
-//             createDiv.textContent = "Wrong! The correct answer is:  " + questions[questionIndex].answer;
-//          }
-//             } 
-
-// }
+questionIndex++;
 
 // Clears html content from page
-// function clrPage() {
-//     questionsDiv.innerHTML = "";
-//     currentTime.innerHTML = "";}
+function clrPage() {
+    questionsDiv.innerHTML = "";
+    currentTime.innerHTML = "";
+}
 
-//     //Clears html content and show score & # of questions correct on screen
-//     if (questionIndex>= questions.length) {
-//         clrPage();
-//         createDiv.textContent = "End of Coding Question Quiz Challenge!!" + " " + "You got " + score + " points!!" + "&" + questions.length + " Questions Correct!";
-//     } else {
-//         loadquestion(questionIndex);
-//         };
+// //Clears html content and show score & # of questions correct on screen
+    // if (questionIndex === questions.length) {
+    //     clrPage();
+    //     createDiv.textContent = "End of Coding Question Quiz Challenge!!" + " " + "You got " + score + " points!!" + "&" + questions.length + " Questions Correct!";
+    // } else {
+    //     loadquestion(questionIndex);
+    //     };
     // questionsDiv.appendChild(createDiv);
 
     // //Clears score message from html & appends new message to html
@@ -195,4 +201,4 @@ function loadquestion (questionIndex) {
 
     //         window.location.replace("./HighScores.html");
     //     }
-    // });
+    // })
