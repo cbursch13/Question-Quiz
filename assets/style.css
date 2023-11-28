@@ -1,3 +1,9 @@
+* {
+background-color: lightgrey;
+
+}
+
+
 /*Styling and position of entry page container*/
 #container {
     position: absolute;
@@ -12,7 +18,7 @@
 }
 /*Start button styling and position*/
 #startTime {
-    background-color: darkgrey;
+    background-color: lightskyblue;
     padding 15px, 35px;
     font-size 30px;
     font-weight: bold;
@@ -61,7 +67,7 @@ button:hover {
 
 #createDiv {
     margin-top: 20px;
-    border-top: 1px solid grey;
+    border-top: 1px solid white;
 }
 
 @media screen and (max-width: 786px) {
