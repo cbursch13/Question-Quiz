@@ -99,14 +99,14 @@ function compareAnswer(event) {
     var selectedChoice = event.target.getAttribute('data-choice');
     console.log(selectedChoice);
     
-    if (selectedChoice = "button") {        
+    if (event.target.tagName = "BUTTON") {        
         q = questions[questionIndex];
         var createDiv = document.createElement("div");
          createDiv.setAttribute("id", "createDiv");
          createDiv.textContent = '';
          questionsDiv.appendChild(createDiv);
                   
-         if (selectedChoice === q.answer) {
+         if (selectedChoice == q.answer) {
             score++;
             createDiv.textContent = "Correct! The answer is:  " + q.choices[q.answer];
          } else {
@@ -114,6 +114,8 @@ function compareAnswer(event) {
              createDiv.textContent = "Wrong! The correct answer is:  " + q.choices[q.answer];
         }
     }
+    questionIndex++;
+    setTimeout(function() { loadquestion(questionIndex); }, 1000);
 }
   
 questionIndex++;
@@ -124,83 +126,87 @@ function clrPage() {
     currentTime.innerHTML = "";
 }
 
-// //Clears html content and show score & # of questions correct on screen
-//     if (questionIndex <= questions.length) {
-//         clrPage();
-//         createDiv.textContent = "End of Coding Question Quiz Challenge!!" + " " + "You got " + score + " points!!" + "&" + questions.length + " Questions Correct!";
-//     } else {
-//         loadquestion(questionIndex);
-//         };
-//     questionsDiv.appendChild(createDiv);
+//Clears html content and show score & # of questions correct on screen
+function endMessage(){
+if (questionIndex === questions.length) {
+        var createDiv = document.createElement("div");
+        createDiv.setAttribute("id", "createDiv");
+        createDiv.textContent = "End of Coding Question Quiz Challenge!" + " " + "You got " + score + " points!" + " &" + questions.length + " Questions Correct!";
+        createDiv.appendChild(createDiv);
+         }}
 
-//     //Clears score message from html & appends new message to html
-//     function clrPage() {
-//         questionsDiv.innerHTML = "";
-//         currentTime.innerHTML = "";
 
-//     var newH1 = document.createElement("h1");
-//     newH1.setAttribute("id", "newH1");
-//     newH1.textContent = "Quiz Complete!!";
 
-//     questionsDiv.appendChild(newH1);
+// Clears score message from html & appends new message to html
+    function clrPage() {
+        questionsDiv.innerHTML = "";
+        currentTime.innerHTML = "";
 
-//     var newP = document.createElement("p");
-//     newP.setAttribute("id", "newP");
+    var newH1 = document.createElement("h1");
+    newH1.setAttribute("id", "newH1");
+    newH1.textContent = "Quiz Complete!!";
 
-//     questionsDiv.appendChild(newP);
+    questionsDiv.appendChild(newH1);
 
-//     if (Secondsleft >= 0) {
-//         var timeRemaining = Secondsleft;
-//         var newP2 = document.createElement("p");
-//         clearInterval(Intervalstart);
-//         newP2.textContent = "Your final score is: " + timeRemaining;
+    var newP = document.createElement("p");
+    newP.setAttribute("id", "newP");
+
+    questionsDiv.appendChild(newP);
+
+    if (Secondsleft >= 0) {
+        var timeRemaining = Secondsleft;
+        var newP2 = document.createElement("p");
+        clearInterval(Intervalstart);
+        newP2.textContent = "Your final score is: " + timeRemaining;
         
-//         questionsDiv.appendChild(newP2);
-//     }
-//     //New Score Label
-//     var newLabel = document.createElement("label");
-//     newLabel.setAttribute("id", "newLabel");
-//     newLabel.textContent = "Enter your Initials: ";
+        questionsDiv.appendChild(newP2);
+    }
+    //New Score Label
+    var newLabel = document.createElement("label");
+    newLabel.setAttribute("id", "newLabel");
+    newLabel.textContent = "Enter your Initials: ";
 
-//     questionsDiv.appendChild(newLabel);
+    questionsDiv.appendChild(newLabel);
 
-//     //New Score Input
-//     var newInput = document.createElement("input");
-//     newInput.setAttribute("type", "text");
-//     newInput.setAttribute("id", "initials");
-//     newInput.textContent = "";
+    //New Score Input
+    var newInput = document.createElement("input");
+    newInput.setAttribute("type", "text");
+    newInput.setAttribute("id", "initials");
+    newInput.textContent = "";
 
-//     questionsDiv.appendChild(newInput);
+    questionsDiv.appendChild(newInput);
 
-//     //New Score Submit
-//     var newSubmit = document.createElement("button");
-//     newSubmit.setAttribute("type", "submit");
-//     newSubmit.setAttribute("id", "Submit");
-//     newSubmit.textContent = "Submit";
+    //New Score Submit
+    var newSubmit = document.createElement("button");
+    newSubmit.setAttribute("type", "submit");
+    newSubmit.setAttribute("id", "Submit");
+    newSubmit.textContent = "Submit";
 
-//     questionsDiv.appendChild(newSubmit);
-//     //Event listener on click for submit score button
-//     newSubmit.addEventListener("click"), function () {
-//         var initials = newInput.value;
+    questionsDiv.appendChild(newSubmit);
+    //Event listener on click for submit score button
+    newSubmit.addEventListener("click", function () {
+        var initials = newInput.value;
 
-//         if (initials === null) {
-//             console.log ("No value submitted!");
+        if (initials === null) {
+            console.log ("No value submitted!");
         
-//         } else {
-//             var finalScore = {
-//                 initials: initials,
-//                 score: timeRemaining
-//             }
-//             console.log(finalScore);
-//             var allScores = localStorage.getItem("allScores");
-//             if (allScores === null){
-//                 allScores = [];
-//             } else {
-//                 allScores = JSON.parse(allScores);
-//             }
-//             allScores.push(finalScore);
-//             var newScore = JSON.stringify(allScores);
-//             localStorage.setItem("allScores", newScore);
+        } else {
+            var finalScore = {
+                initials: initials,
+                score: timeRemaining
+            }
+            console.log(finalScore);
+            var allScores = localStorage.getItem("allScores");
+            if (allScores === null){
+                allScores = [];
+            } else {
+                allScores = JSON.parse(allScores);
+            }
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
 
-//             window.location.replace("./HighScores.html");
-//         }}}
+            window.location.replace("./HighScores.html");
+        }
+    });
+}
