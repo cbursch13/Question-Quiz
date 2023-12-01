@@ -127,13 +127,16 @@ function clrPage() {
 }
 
 //Clears html content and show score & # of questions correct on screen
-function endMessage(){
-if (questionIndex === questions.length) {
-        var createDiv = document.createElement("div");
-        createDiv.setAttribute("id", "createDiv");
-        createDiv.textContent = "End of Coding Question Quiz Challenge!" + " " + "You got " + score + " points!" + " &" + questions.length + " Questions Correct!";
-        createDiv.appendChild(createDiv);
-         }}
+function clrPage(event){
+if (questionIndex >= questions.length) {
+    var createDiv = document.createElement("div");
+    createDiv.setAttribute("id", "createDiv");
+    createDiv.textContent = "End of Coding Question Quiz Challenge!" + " " + "You got " + score + " points!" + " &" + questions.length + " Questions Correct!";
+    questionsDiv.appendChild(createDiv);
+} else {
+    loadquestion(questionIndex);
+      }
+}
 
 
 
